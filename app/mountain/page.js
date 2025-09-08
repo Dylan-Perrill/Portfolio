@@ -42,38 +42,33 @@ export default function Home() {
                     {
                         src: "/gallery/mountain1.jpg",
                         alt: "A picture of me on top of the mountain",
-                        caption: "A picture of me at the summit of the mountain",
-                        width: 800,
-                        height: 600,
+                        caption: "A picture of me at the summit of the mountain"
                     },
                     {
                         src: "/gallery/mountain2.jpg",
                         alt: "A climber ascending a steep rocky slope",
-                        caption: "Climbing the Grand Teton",
-                        width: 800,
-                        height: 600
+                        caption: "Climbing the Grand Teton"
                     },
                     {
                         src: "/gallery/mountain3.jpg",
                         alt: "A climber ascending a steep rocky slope",
-                        caption: "Climbing the Grand Teton",
-                        width: 800,
-                        height: 600
+                        caption: "Climbing the Grand Teton"
                     },
                     {
                         src: "/gallery/mountain4.jpg",
                         alt: "A climber ascending a steep rocky slope",
-                        caption: "Climbing the Grand Teton",
-                        width: 800,
-                        height: 600
+                        caption: "Me and my friend at the lower saddle of the mountain"
                     },
                     {
                         src: "/gallery/mountain5.jpg",
-                        alt: "A climber ascending a steep rocky slope",
-                        caption: "Climbing the Grand Teton",
-                        width: 800,
-                        height: 600
+                        alt: "A car with a mountain range in the background",
+                        caption: "A view of the mountain range from the bottom"
                     },
+                    {
+                        src: "/gallery/mountain6.jpg",
+                        alt: "A room with a bunk bed and a door with lots of gear.",
+                        caption: "The inside of the hut we spent the night in before summiting"
+                    }
                 ]} columns={4} />
 
             <Footer />
