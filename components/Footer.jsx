@@ -2,7 +2,7 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="container" style={{padding:0}}>
-        © {new Date().getFullYear()} Your Name · <a href="https://github.com/yourusername">GitHub</a> · <a href="https://www.linkedin.com/in/yourusername/">LinkedIn</a>
+        © {new Date().getFullYear()} Dylan Perrill · <a href="https://github.com/Dylan-Perrill">GitHub</a> · <a href="https://www.linkedin.com/in/dylan-perrill-455789294/">LinkedIn</a>
       </div>
     </footer>
   );

@@ -22,8 +22,9 @@ export default function Home() {
         <div className="card">
           <h3 style={{marginTop:0}}>Quick facts</h3>
           <ul style={{marginTop:0}}>
-            <li>Based in City, State.</li>
+            <li>Based in Plymouth, Minnesota.</li>
             <li>Favorite stack: Next.js, Node, Postgres.</li>
+              <li>I have climbed a mountain <a href={"/mountain"}>(guess which one)</a></li>
             <li>Interested in frontend, full‑stack, and data.</li>
           </ul>
         </div>
