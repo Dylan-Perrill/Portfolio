@@ -1,7 +1,7 @@
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import Quiz from "@/components/Quiz";
-import Image from "next/image"; 
+import Gallery from "@/components/Gallery";
 import ProjectCard from "@/components/ProjectCard";
 
 export default function Home() {
@@ -11,29 +11,13 @@ export default function Home() {
             <section style={{ marginTop: "1rem" }}>
             {/* a quiz to guess what mountain I have climbed (The Grand Teton */}
                 <h1>Guess the Mountain 🏔️</h1>
-                <p>Can you guess which mountain I've climbed? Here's a hint: it's the highest peak in the Teton Range and a popular destination for climbers and hikers. It's known for its stunning views and challenging routes. Take a guess!</p>
+                <p>Hint: it’s the crown of the range — the tallest peak, with routes that test you but reward you with unbelievable scenery. Can you guess which mountain I climbed?</p>
+                <p>(Also, look below the quiz for some photos to help you guess)</p>
                 <div className="card-grid">
                 </div>
             </section>
             {/* <Form /> */}
-            <div style={{ maxWidth: 420, marginTop: "1rem" }}>
-                <Image
-                    src="/mountain.jpg"
-                    alt="Me on the summit of a mountain"
-                    width={420}
-                    height={560}
-                    style={{
-                    width: "100%",
-                    height: "auto",
-                    borderRadius: "8px",
-                    border: "1px solid var(--border,#333)"
-                    }}
-                    priority
-                />
-                <p style={{ fontSize: "0.8rem", opacity: 0.7, marginTop: "0.4rem" }}>
-                    Summit photo from my mountain climb.
-                </p>
-            </div>
+            
             <Quiz
                 title="Guess the Mountain"
                 items={[
@@ -54,6 +38,44 @@ export default function Home() {
                     }
                 ]}
                 />
+                <Gallery photos={[
+                    {
+                        src: "/gallery/mountain1.jpg",
+                        alt: "A picture of me on top of the mountain",
+                        caption: "A picture of me at the summit of the mountain",
+                        width: 800,
+                        height: 600,
+                    },
+                    {
+                        src: "/gallery/mountain2.jpg",
+                        alt: "A climber ascending a steep rocky slope",
+                        caption: "Climbing the Grand Teton",
+                        width: 800,
+                        height: 600
+                    },
+                    {
+                        src: "/gallery/mountain3.jpg",
+                        alt: "A climber ascending a steep rocky slope",
+                        caption: "Climbing the Grand Teton",
+                        width: 800,
+                        height: 600
+                    },
+                    {
+                        src: "/gallery/mountain4.jpg",
+                        alt: "A climber ascending a steep rocky slope",
+                        caption: "Climbing the Grand Teton",
+                        width: 800,
+                        height: 600
+                    },
+                    {
+                        src: "/gallery/mountain5.jpg",
+                        alt: "A climber ascending a steep rocky slope",
+                        caption: "Climbing the Grand Teton",
+                        width: 800,
+                        height: 600
+                    },
+                ]} columns={4} />
+
             <Footer />
         </>
     );
