@@ -47,12 +47,12 @@ export default function Home() {
                     {
                         src: "/gallery/mountain2.jpg",
                         alt: "A climber ascending a steep rocky slope",
-                        caption: "Climbing the Grand Teton"
+                        caption: "A view of the sunrise on another mountain in the range"
                     },
                     {
                         src: "/gallery/mountain3.jpg",
-                        alt: "A climber ascending a steep rocky slope",
-                        caption: "Climbing the Grand Teton"
+                        alt: "A room with a bunk bed and a door with lots of gear.",
+                        caption: "The inside of the hut we spent the night in before summiting"
                     },
                     {
                         src: "/gallery/mountain4.jpg",
@@ -66,8 +66,8 @@ export default function Home() {
                     },
                     {
                         src: "/gallery/mountain6.jpg",
-                        alt: "A room with a bunk bed and a door with lots of gear.",
-                        caption: "The inside of the hut we spent the night in before summiting"
+                        alt: "The outside of the hut we spent the night in before summiting",
+                        caption: "The outside of the hut we spent the night in before summiting"
                     }
                 ]} columns={4} />
 
