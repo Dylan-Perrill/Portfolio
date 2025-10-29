@@ -34,22 +34,22 @@ export default function Home() {
         <h2 style={{marginBottom:"0.75rem"}}>Featured Projects</h2>
         <div className="card-grid">
           <ProjectCard
-            title="Project One"
-            description="A short sentence about the problem, solution, and impact."
-            tech={["Next.js", "Node", "Postgres"]}
-            demo="https://example.com"
-            code="https://github.com/yourusername/project-one"
+            title="Sora 2 Video Generator"
+            description="A small web app to generate AI-powered videos using text and image prompts."
+            tech={["TypeScript", "Vite + Node.js", "Supabase", "OpenAI API"]}
+            demo="https://sora2-tool-pi.vercel.app/"
+            code="https://github.com/Dylan-Perrill/Sora2_Tool"
           />
           <ProjectCard
             title="Project Two"
-            description="What it does, and ideally a metric (e.g., cut load time by 35%)."
+            description="llorem ipsum placeholder text for another highlight project."
             tech={["React", "Vite", "Firebase"]}
             demo="https://example.com"
             code="https://github.com/yourusername/project-two"
           />
           <ProjectCard
             title="Project Three"
-            description="Another highlight project with a concise, outcome‑oriented line."
+            description="llorem ipsum placeholder text for a third highlight project."
             tech={["TypeScript", "Tailwind", "Vercel"]}
             demo="https://example.com"
             code="https://github.com/yourusername/project-three"
