@@ -62,7 +62,7 @@ or they were never finished. Not a quality judgment; do not resurface them.
   (2023–present); Operations Intern, Compute North (2020–2022).
 - **Education:** College of Saint Benedict / Saint John's University — B.A.
   Computer Science, minor in Finance, expected May 2027.
-- **Skills** grouped: Languages (TypeScript, JavaScript, Python, Java, SQL, C#) ·
+- **Skills** grouped: Languages (TypeScript, JavaScript, Python, Java, SQL) ·
   Frameworks (Next.js, React, React Native/Expo, Fastify, Node, Three.js, Prisma,
   Tailwind) · Infra & tools (Supabase/Postgres, Vercel, Raspberry Pi, Cloudflare
   Tunnel, GitHub Actions, Git, Linux).
