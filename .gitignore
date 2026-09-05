@@ -17,3 +17,6 @@ pnpm-debug.log*
 .env.production.local
 # OS
 .DS_Store
+
+# Brainstorming companion sessions
+.superpowers/
