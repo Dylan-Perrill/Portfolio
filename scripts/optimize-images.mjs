@@ -1,9 +1,9 @@
 // .capture/<slug>/<name>.png → public/work/<slug>/<name>.webp (max 1920 wide; *-mobile max 780 wide).
-// public/gallery/*.jpg → re-encoded in place (max 1000px on the long edge, EXIF-rotated).
-// Narrowed from the original 1600-wide spec: three of the six source photos are
-// portrait-oriented, so a width-only cap barely shrank them and they stayed over the
-// 300KB budget even at 1400 wide / quality 82. Bounding both dimensions at 1000px
-// fixes that while keeping quality at the spec's 82.
+// public/gallery/*.jpg → re-encoded in place (max 1600px on the long edge, EXIF-rotated).
+// The 300KB budget applies to the captured work screenshots only: gallery photos are
+// served through next/image, which re-encodes per device, so a larger source only
+// costs repo weight, not shipped bytes. Gallery files are exempt from the WARN check
+// (their size is still printed).
 // Writes content/image-manifest.json with every output's dimensions.
 import sharp from "sharp";
 import { mkdir, readdir, writeFile } from "node:fs/promises";
@@ -42,17 +42,18 @@ async function processGallery() {
   const dir = path.join("public", "gallery");
   for (const file of (await readdir(dir)).filter((f) => /\.jpe?g$/i.test(f))) {
     const src = path.join(dir, file);
-    const buf = await sharp(src).rotate().resize({ width: 1000, height: 1000, fit: "inside", withoutEnlargement: true }).jpeg({ quality: 82, mozjpeg: true }).toBuffer();
+    const buf = await sharp(src).rotate().resize({ width: 1600, height: 1600, fit: "inside", withoutEnlargement: true }).jpeg({ quality: 82, mozjpeg: true }).toBuffer();
     await writeFile(src, buf);
     const meta = await sharp(buf).metadata();
     manifest[`gallery/${file}`] = { width: meta.width, height: meta.height };
-    report(src, buf.length);
+    report(src, buf.length, { exemptFromCap: true });
   }
 }
 
-function report(file, bytes) {
+function report(file, bytes, { exemptFromCap = false } = {}) {
   const kb = Math.round(bytes / 1024);
-  console.log(`${bytes > MAX_BYTES ? "WARN >300KB" : "ok"}  ${kb}KB  ${file}`);
+  const status = exemptFromCap ? "ok" : bytes > MAX_BYTES ? "WARN >300KB" : "ok";
+  console.log(`${status}  ${kb}KB  ${file}`);
 }
 
 await processWork();

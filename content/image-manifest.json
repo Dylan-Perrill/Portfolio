@@ -1,27 +1,27 @@
 {
   "gallery/mountain1.jpg": {
-    "width": 750,
-    "height": 1000
+    "width": 1200,
+    "height": 1600
   },
   "gallery/mountain2.jpg": {
-    "width": 750,
-    "height": 1000
+    "width": 1200,
+    "height": 1600
   },
   "gallery/mountain3.jpg": {
-    "width": 1000,
-    "height": 750
+    "width": 1600,
+    "height": 1200
   },
   "gallery/mountain4.jpg": {
-    "width": 750,
-    "height": 1000
+    "width": 1200,
+    "height": 1600
   },
   "gallery/mountain5.jpg": {
-    "width": 750,
-    "height": 1000
+    "width": 1200,
+    "height": 1600
   },
   "gallery/mountain6.jpg": {
-    "width": 750,
-    "height": 1000
+    "width": 1200,
+    "height": 1600
   },
   "work/disc-mayhem/bomb.webp": {
     "width": 1280,

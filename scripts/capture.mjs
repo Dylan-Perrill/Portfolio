@@ -82,6 +82,17 @@ const targets = [
       await page.getByText("Test Page").first().click();
       await page.waitForTimeout(2000);
       await dismissSoraError(page);
+      // The Debug Logs panel shows "Error loading videos: Failed to fetch" from the
+      // fake seeded API key. Clear it right before the shot so the recruiter-facing
+      // frame doesn't show an error line.
+      let clearBtn = page.getByRole("button", { name: /clear/i }).first();
+      if ((await clearBtn.count()) === 0) {
+        clearBtn = page.getByText(/^clear$/i).first();
+      }
+      if (await clearBtn.count()) {
+        await clearBtn.click({ timeout: 1000 }).catch(() => {});
+        await page.waitForTimeout(800);
+      }
     },
   },
   {
