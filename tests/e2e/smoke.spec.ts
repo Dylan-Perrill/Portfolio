@@ -97,3 +97,37 @@ test("mountain: quiz is completable by keyboard and photos render", async ({ pag
   await expect(page.getByText("3 / 3")).toBeVisible();
   expect(errors).toEqual([]);
 });
+
+test("metadata routes: OG image, icon, sitemap, robots", async ({ request }) => {
+  const og = await request.get("/opengraph-image");
+  expect(og.status()).toBe(200);
+  expect(og.headers()["content-type"]).toContain("image/png");
+  expect((await og.body()).length).toBeGreaterThan(10_000);
+
+  const icon = await request.get("/icon.svg");
+  expect(icon.status()).toBe(200);
+
+  const sitemap = await request.get("/sitemap.xml");
+  expect(sitemap.status()).toBe(200);
+  const xml = await sitemap.text();
+  for (const path of ["/about", "/work/entreprenewer", "/work/sora-2-tool", "/mountain"]) {
+    expect(xml).toContain(`https://www.dylanperrill.com${path}`);
+  }
+
+  const robots = await request.get("/robots.txt");
+  expect(await robots.text()).toContain("Sitemap: https://www.dylanperrill.com/sitemap.xml");
+});
+
+test("404 page is designed and links home", async ({ page }) => {
+  const res = await page.goto("/nope");
+  expect(res?.status()).toBe(404);
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Nothing");
+  await expect(page.getByRole("link", { name: /Back to the front page/ })).toHaveAttribute("href", "/");
+});
+
+test("home page carries OG tags pointing at the generated image", async ({ page }) => {
+  await page.goto("/");
+  const og = page.locator('meta[property="og:image"]');
+  await expect(og).toHaveAttribute("content", /opengraph-image/);
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute("content", "Dylan Perrill");
+});
