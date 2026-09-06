@@ -18,3 +18,16 @@ test("home: shell renders with header, headline and contact footer", async ({ pa
   await expect(page.getByRole("contentinfo")).toContainText("dperrill001@csbsju.edu");
   expect(errors).toEqual([]);
 });
+
+test("home: four project blocks with hero images and links", async ({ page }) => {
+  await page.goto("/");
+  const work = page.locator("#work");
+  await expect(work.getByRole("article")).toHaveCount(4);
+  for (const title of ["entrepreNewer", "Disc Mayhem", "Meridian", "Sora 2 Tool"]) {
+    await expect(work.getByRole("heading", { level: 2, name: title })).toBeVisible();
+  }
+  await expect(work.getByRole("link", { name: "Open entrepreNewer" })).toHaveAttribute("href", "/work/entreprenewer");
+  const heroImg = work.getByRole("article").first().getByRole("img");
+  await expect(heroImg).toHaveAttribute("alt", /entrepreNewer landing page/);
+  await expect(page.getByText("Stearns Bank Hackathon — 1st place")).toBeVisible();
+});
