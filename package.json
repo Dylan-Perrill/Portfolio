@@ -1,23 +1,37 @@
 {
-  "name": "portfolio-nextjs-starter",
-  "version": "1.0.0",
+  "name": "dylanperrill.com",
+  "version": "2.0.0",
   "private": true,
+  "engines": { "node": ">=22" },
   "scripts": {
     "dev": "next dev",
+    "prebuild": "vitest run --passWithNoTests",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "capture": "node scripts/capture.mjs",
+    "optimize": "node scripts/optimize-images.mjs",
+    "optimize:gallery": "node scripts/optimize-images.mjs --gallery"
   },
   "dependencies": {
-    "next": "14.2.5",
-    "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "next": "16.3.4",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
   },
   "devDependencies": {
-    "eslint": "^8.57.0",
-    "eslint-config-next": "14.2.5"
-  },
-  "engines": {
-    "node": ">=18"
+    "@playwright/test": "^1.63.0",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.4",
+    "sharp": "^0.35.4",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "vitest": "^5.0.0"
   }
 }

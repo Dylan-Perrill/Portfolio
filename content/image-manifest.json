@@ -1,0 +1,78 @@
+{
+  "gallery/mountain1.jpg": {
+    "width": 1200,
+    "height": 1600
+  },
+  "gallery/mountain2.jpg": {
+    "width": 1200,
+    "height": 1600
+  },
+  "gallery/mountain3.jpg": {
+    "width": 1600,
+    "height": 1200
+  },
+  "gallery/mountain4.jpg": {
+    "width": 1200,
+    "height": 1600
+  },
+  "gallery/mountain5.jpg": {
+    "width": 1200,
+    "height": 1600
+  },
+  "gallery/mountain6.jpg": {
+    "width": 1200,
+    "height": 1600
+  },
+  "work/disc-mayhem/bomb.webp": {
+    "width": 1280,
+    "height": 760
+  },
+  "work/disc-mayhem/final.webp": {
+    "width": 1280,
+    "height": 760
+  },
+  "work/disc-mayhem/hole.webp": {
+    "width": 1280,
+    "height": 760
+  },
+  "work/disc-mayhem/lobby.webp": {
+    "width": 1280,
+    "height": 760
+  },
+  "work/entreprenewer/features.webp": {
+    "width": 1920,
+    "height": 1200
+  },
+  "work/entreprenewer/landing-mobile.webp": {
+    "width": 780,
+    "height": 1688
+  },
+  "work/entreprenewer/landing.webp": {
+    "width": 1920,
+    "height": 1200
+  },
+  "work/meridian/overview-mobile.webp": {
+    "width": 780,
+    "height": 1688
+  },
+  "work/meridian/overview.webp": {
+    "width": 1920,
+    "height": 1200
+  },
+  "work/meridian/transactions.webp": {
+    "width": 1920,
+    "height": 1200
+  },
+  "work/sora-2-tool/generator-mobile.webp": {
+    "width": 780,
+    "height": 1688
+  },
+  "work/sora-2-tool/generator.webp": {
+    "width": 1920,
+    "height": 1200
+  },
+  "work/sora-2-tool/test-console.webp": {
+    "width": 1920,
+    "height": 1200
+  }
+}

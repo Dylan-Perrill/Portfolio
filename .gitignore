@@ -17,3 +17,16 @@ pnpm-debug.log*
 .env.production.local
 # OS
 .DS_Store
+
+# Brainstorming companion sessions
+.superpowers/
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# playwright / captures / audits
+.capture/
+test-results/
+playwright-report/
+.lighthouse/
