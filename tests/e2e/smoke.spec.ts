@@ -131,3 +131,12 @@ test("home page carries OG tags pointing at the generated image", async ({ page 
   await expect(og).toHaveAttribute("content", /opengraph-image/);
   await expect(page.locator('meta[property="og:title"]')).toHaveAttribute("content", "Dylan Perrill");
 });
+
+test("reduced motion disables the headline animation", async ({ browser }) => {
+  const ctx = await browser.newContext({ reducedMotion: "reduce", baseURL: "http://localhost:3100" });
+  const page = await ctx.newPage();
+  await page.goto("/");
+  const anim = await page.locator(".hero-line").first().evaluate((el) => getComputedStyle(el).animationName);
+  expect(anim).toBe("none");
+  await ctx.close();
+});
