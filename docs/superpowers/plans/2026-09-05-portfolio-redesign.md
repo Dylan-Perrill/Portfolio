@@ -1523,7 +1523,7 @@ export const about = {
     school: "College of Saint Benedict & Saint John's University",
     degree: "B.A. Computer Science, minor in Finance",
     when: "Expected May 2027",
-    note: "Sterns Bank Hackathon — 1st place, April 2024: accessibility features (translation, text-to-speech) and an AI customer-support assistant.",
+    note: "Stearns Bank Hackathon — 1st place, April 2024: accessibility features (translation, text-to-speech) and an AI customer-support assistant.",
   },
   skills: {
     Languages: ["TypeScript", "JavaScript", "Python", "Java", "SQL"],
@@ -1536,7 +1536,7 @@ export const about = {
     alt: "Dylan Perrill",
   },
   credential: {
-    label: "Sterns Bank Hackathon — 1st place",
+    label: "Stearns Bank Hackathon — 1st place",
     when: "April 2024",
     note: "Accessibility features and an AI support assistant for banking, CSB/SJU.",
   },
@@ -1825,7 +1825,7 @@ test("home: four project blocks with hero images and links", async ({ page }) =>
   await expect(work.getByRole("link", { name: "Open entrepreNewer" })).toHaveAttribute("href", "/work/entreprenewer");
   const heroImg = work.getByRole("article").first().getByRole("img");
   await expect(heroImg).toHaveAttribute("alt", /entrepreNewer landing page/);
-  await expect(page.getByText("Sterns Bank Hackathon — 1st place")).toBeVisible();
+  await expect(page.getByText("Stearns Bank Hackathon — 1st place")).toBeVisible();
 });
 ```
 
@@ -2215,7 +2215,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 - Modify: `tests/e2e/smoke.spec.ts`
 
 **Interfaces:**
-- Consumes: `about`, `site`.
+- Consumes: `about`, `site`. Note (copy review, 2026-09-05): `about` now also has `leadership: { role, org, when, note }[]` and `certifications: string[]`, `skills` has four groups, and `education.note` no longer mentions the hackathon (it lives in `leadership` and `credential`). The page code below already renders these.
 - Produces: `<Monogram />`; route `/about`.
 
 - [ ] **Step 1: Write `components/Monogram.tsx`**
@@ -2324,7 +2324,33 @@ export default function AboutPage() {
             <p className="text-ink-2">{about.education.degree}</p>
             <p className="text-meta uppercase text-ink-3">{about.education.when}</p>
             <p className="mt-2 max-w-[60ch] text-ink-2">{about.education.note}</p>
+            <p className="mt-6 text-meta uppercase text-ink-3">Certifications</p>
+            <ul className="mt-2 space-y-1">
+              {about.certifications.map((c) => (
+                <li key={c}>{c}</li>
+              ))}
+            </ul>
           </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="leadership" className="mt-16">
+        <div className="grid gap-4 border-t-2 border-ink pt-6 md:grid-cols-12 md:gap-10">
+          <h2 id="leadership" className="text-meta uppercase text-ink-3 md:col-span-3">
+            Leadership &amp; awards
+          </h2>
+          <ol className="md:col-span-9">
+            {about.leadership.map((e) => (
+              <li key={`${e.org}-${e.role}`} className="grid gap-2 border-b border-rule-light py-5 md:grid-cols-[10rem_1fr]">
+                <p className="text-meta uppercase text-ink-3">{e.when}</p>
+                <div>
+                  <p className="font-extrabold">{e.role}</p>
+                  <p className="text-meta uppercase text-ink-3">{e.org}</p>
+                  <p className="mt-2 max-w-[60ch] text-ink-2">{e.note}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
@@ -2333,7 +2359,7 @@ export default function AboutPage() {
           <h2 id="skills" className="text-meta uppercase text-ink-3 md:col-span-3">
             Skills
           </h2>
-          <dl className="grid gap-6 md:col-span-9 md:grid-cols-3">
+          <dl className="grid gap-6 md:col-span-9 md:grid-cols-2 lg:grid-cols-4">
             {Object.entries(about.skills).map(([group, items]) => (
               <div key={group}>
                 <dt className="text-meta uppercase text-ink-3">{group}</dt>

@@ -57,15 +57,23 @@ or they were never finished. Not a quality judgment; do not resurface them.
   climbed the Grand Teton → link to `/mountain`).
 - **Availability line:** "Graduating May 2027 — open to new-grad software
   engineering roles."
-- **Experience** (from the résumé): HTML Developer Intern, WAND Digital (2024);
-  Finance Intern, Perrill (2024); Classroom & A/V Support Technician, CSB/SJU
-  (2023–present); Operations Intern, Compute North (2020–2022).
-- **Education:** College of Saint Benedict / Saint John's University — B.A.
-  Computer Science, minor in Finance, expected May 2027.
-- **Skills** grouped: Languages (TypeScript, JavaScript, Python, Java, SQL) ·
-  Frameworks (Next.js, React, React Native/Expo, Fastify, Node, Three.js, Prisma,
-  Tailwind) · Infra & tools (Supabase/Postgres, Vercel, Raspberry Pi, Cloudflare
-  Tunnel, GitHub Actions, Git, Linux).
+- **Experience** (from the résumé dated 2026-09-04, which supersedes the 2024
+  PDF): HTML Developer & Content Deployment Specialist, WAND Digital (May 2025 –
+  present; full-time summers, part-time remote in term); Classroom & A/V Support
+  Technician, CSB/SJU (Aug 2023 – present); Finance Intern, Perrill (May–Aug
+  2024).
+- **Leadership & awards:** Treasurer, Computer Science Club (2026 – present);
+  co-led the "AI & Automation" session in Ethical Issues in Computing (Fall
+  2025); Stearns Bank Hackathon, 1st place (April 2024).
+- **Education:** Saint John's University, Collegeville, MN — B.A. Computer
+  Science, minor in Finance, expected May 2027. Certifications: Anthropic —
+  Claude Code in Action (Aug 2026); Claude Code 101 and Claude 101 (Jun 2026).
+- **Skills** in four groups: AI & agentic (Claude Code skills/rules/subagents,
+  context engineering, agent-assisted workflows, LLM APIs) · Languages
+  (TypeScript, JavaScript, Python, Java, SQL) · Frameworks (React, Next.js,
+  React Native/Expo, Vite, Node, Fastify, Three.js, Prisma, Tailwind) · Infra &
+  tools (Supabase/Postgres, Vercel, Raspberry Pi, Cloudflare Tunnel, GitHub
+  Actions, Vitest, JUnit, Git, Linux).
 - **Headshot:** a slot for `public/about/headshot.jpg`. Until Dylan supplies one, a
   typographic monogram block renders in its place. Never a broken image.
 
