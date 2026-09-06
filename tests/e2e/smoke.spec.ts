@@ -31,3 +31,33 @@ test("home: four project blocks with hero images and links", async ({ page }) =>
   await expect(heroImg).toHaveAttribute("alt", /entrepreNewer landing page/);
   await expect(page.getByText("Stearns Bank Hackathon — 1st place")).toBeVisible();
 });
+
+for (const [slug, title] of [
+  ["entreprenewer", "entrepreNewer"],
+  ["disc-mayhem", "Disc Mayhem"],
+  ["meridian", "Meridian"],
+  ["sora-2-tool", "Sora 2 Tool"],
+] as const) {
+  test(`case study /work/${slug} renders`, async ({ page }) => {
+    const errors = await collectConsoleErrors(page);
+    const res = await page.goto(`/work/${slug}`);
+    expect(res?.status()).toBe(200);
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText(title);
+    for (const h of ["What it is", "How it's built", "Highlights", "What I'd do next", "More screens"]) {
+      await expect(page.getByRole("heading", { level: 2, name: h })).toBeVisible();
+    }
+    expect(errors).toEqual([]);
+  });
+}
+
+test("entrepreNewer shows the architecture diagram; others do not", async ({ page }) => {
+  await page.goto("/work/entreprenewer");
+  await expect(page.getByRole("img", { name: /Expo web on Vercel/ })).toBeVisible();
+  await page.goto("/work/meridian");
+  await expect(page.getByRole("img", { name: /Expo web on Vercel/ })).toHaveCount(0);
+});
+
+test("unknown project slug is a 404", async ({ page }) => {
+  const res = await page.goto("/work/does-not-exist");
+  expect(res?.status()).toBe(404);
+});
