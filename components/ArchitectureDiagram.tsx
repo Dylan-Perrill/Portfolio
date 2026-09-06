@@ -62,8 +62,8 @@ export function ArchitectureDiagram() {
         <line x1="450" y1="85" x2="518" y2="85" strokeWidth="2.5" markerEnd="url(#arrow)" className={arrow} />
         <line x1="600" y1="130" x2="600" y2="198" strokeWidth="2.5" markerEnd="url(#arrow)" className={arrow} />
         <line x1="780" y1="130" x2="780" y2="198" strokeWidth="2.5" markerEnd="url(#arrow)" className={arrow} />
-        <line x1="450" y1="250" x2="518" y2="250" strokeWidth="2.5" strokeDasharray="6 4" markerEnd="url(#arrow)" className={arrow} />
-        <text x="455" y="240" className={small}>push to main</text>
+        <line x1="450" y1="215" x2="518" y2="135" strokeWidth="2.5" strokeDasharray="6 4" markerEnd="url(#arrow)" className={arrow} />
+        <text x="300" y="185" className={small}>push to main</text>
       </svg>
       <figcaption className="mt-2 text-meta uppercase text-ink-3">Production topology</figcaption>
     </figure>

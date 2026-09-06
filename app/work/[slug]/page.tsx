@@ -64,7 +64,7 @@ export default async function ProjectPage(props: PageProps<"/work/[slug]">) {
 
       <Section id="how" title="How it's built">
         {project.slug === "entreprenewer" && (
-          <div className="mb-8">
+          <div className="mb-8 hidden md:block">
             <ArchitectureDiagram />
           </div>
         )}
