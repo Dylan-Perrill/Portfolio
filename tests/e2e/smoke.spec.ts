@@ -61,3 +61,21 @@ test("unknown project slug is a 404", async ({ page }) => {
   const res = await page.goto("/work/does-not-exist");
   expect(res?.status()).toBe(404);
 });
+
+test("about: availability, experience, skills and the mountain link", async ({ page }) => {
+  const errors = await collectConsoleErrors(page);
+  const res = await page.goto("/about");
+  expect(res?.status()).toBe(200);
+  await expect(page.getByText("Graduating May 2027 — open to new-grad software engineering roles.")).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "Experience" })).toBeVisible();
+  // Scoped to the Experience section: the bio also mentions "WAND Digital" in prose,
+  // so an unscoped getByText match is ambiguous (Playwright strict-mode violation).
+  const experience = page.locator("section", { has: page.locator("#experience") });
+  await expect(experience.getByText("WAND Digital")).toBeVisible();
+  await expect(page.getByRole("link", { name: "Guess the mountain →" })).toHaveAttribute("href", "/mountain");
+  // Headshot absent → monogram; present → image. Either is fine, but exactly one must render.
+  const monogram = page.getByRole("img", { name: /Monogram placeholder/ });
+  const photo = page.getByRole("img", { name: "Dylan Perrill", exact: true });
+  expect((await monogram.count()) + (await photo.count())).toBe(1);
+  expect(errors).toEqual([]);
+});
