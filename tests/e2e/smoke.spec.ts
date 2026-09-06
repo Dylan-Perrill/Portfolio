@@ -79,3 +79,21 @@ test("about: availability, experience, skills and the mountain link", async ({ p
   expect((await monogram.count()) + (await photo.count())).toBe(1);
   expect(errors).toEqual([]);
 });
+
+test("mountain: quiz is completable by keyboard and photos render", async ({ page }) => {
+  const errors = await collectConsoleErrors(page);
+  await page.goto("/mountain");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Guess the Mountain");
+  await expect(page.getByRole("figure")).toHaveCount(6);
+
+  // Answer all three by keyboard: focus the correct choice and press Enter, then Next/Finish.
+  for (const answer of ["The Grand Teton", "Wyoming", "13,775 ft"]) {
+    await page.getByRole("button", { name: answer, exact: true }).focus();
+    await page.keyboard.press("Enter");
+    await expect(page.getByText("Correct.")).toBeVisible();
+    await page.getByRole("button", { name: /Next|Finish/ }).focus();
+    await page.keyboard.press("Enter");
+  }
+  await expect(page.getByText("3 / 3")).toBeVisible();
+  expect(errors).toEqual([]);
+});
