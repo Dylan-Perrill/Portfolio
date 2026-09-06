@@ -105,9 +105,9 @@ separate task).
    sub, then the status line `● api.neurship.dev · online` when healthy.
 3. **Selected work:** kicker `Selected work — 2025 → 2026`, then four poster blocks
    separated by 2px rules, image side alternating left/right. Each block: number,
-   status label (`Live` / `Source`), title (display size), two-sentence pitch,
-   stack line, `Open project ↗` (to `/work/[slug]`), and direct `Live ↗` /
-   `Source ↗` links where available.
+   status label (`Live` / `Source`), title (title size), one-sentence pitch
+   (the same `pitch` as the case-study header), stack line, `Open project →`
+   (to `/work/[slug]`), and direct `Live ↗` / `Source ↗` links where available.
 4. **Credential strip:** one rule-bounded line for the hackathon win.
 5. **About teaser:** two lines + `More about me →`.
 6. **Footer (every page):** email set large, GitHub, LinkedIn, Résumé, copyright.

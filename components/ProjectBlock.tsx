@@ -8,15 +8,16 @@ export function ProjectBlock({ project, index }: { project: Project; index: numb
   const status = project.links.live ? "Live" : "Source";
 
   return (
-    <article className="grid gap-6 border-t-2 border-ink py-8 md:grid-cols-12 md:items-center md:gap-10 md:py-14">
+    <article className="group grid gap-6 border-t-2 border-ink py-8 md:grid-cols-12 md:items-center md:gap-10 md:py-14">
       <Link
         href={href}
         aria-label={`Open ${project.title}`}
-        className={`group relative block md:col-span-7 ${reverse ? "md:order-2" : ""}`}
+        tabIndex={-1}
+        className={`relative block md:col-span-7 ${reverse ? "md:order-2" : ""}`}
       >
         <span
           aria-hidden="true"
-          className="absolute inset-0 bg-blue transition-transform duration-200 ease-out group-hover:translate-x-2.5 group-hover:translate-y-2.5 group-focus-visible:translate-x-2.5 group-focus-visible:translate-y-2.5"
+          className="absolute inset-0 bg-blue transition-transform duration-[180ms] ease-out group-hover:translate-x-2.5 group-hover:translate-y-2.5 group-focus-within:translate-x-2.5 group-focus-within:translate-y-2.5"
         />
         <Image
           src={project.images.hero.src}
@@ -34,7 +35,7 @@ export function ProjectBlock({ project, index }: { project: Project; index: numb
           <span className="font-extrabold text-blue">{project.number}</span> — {status}
         </p>
         <h2 className="type-title mt-3">
-          <Link href={href} className="hover:text-blue">
+          <Link href={href} className="group-hover:text-blue">
             {project.title}
           </Link>
         </h2>
@@ -42,16 +43,18 @@ export function ProjectBlock({ project, index }: { project: Project; index: numb
         <p className="mt-4 text-meta uppercase text-ink-3">{project.stack.slice(0, 5).join(" · ")}</p>
         <p className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-meta font-extrabold uppercase">
           <Link href={href} className="link-draw">
-            Open project ↗
+            Open project →
           </Link>
           {project.links.live && (
             <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="link-draw">
-              Live ↗
+              Live
+              <span aria-hidden="true"> ↗</span>
             </a>
           )}
           {project.links.source && (
             <a href={project.links.source} target="_blank" rel="noopener noreferrer" className="link-draw">
-              Source ↗
+              Source
+              <span aria-hidden="true"> ↗</span>
             </a>
           )}
         </p>

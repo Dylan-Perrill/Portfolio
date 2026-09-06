@@ -31,7 +31,8 @@ export function SiteHeader() {
                   rel="noopener noreferrer"
                   className="link-draw text-meta uppercase"
                 >
-                  {l.label} ↗
+                  {l.label}
+                  <span aria-hidden="true"> ↗</span>
                 </a>
               ) : (
                 <Link href={l.href} className="link-draw text-meta uppercase">

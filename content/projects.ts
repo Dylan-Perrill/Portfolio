@@ -15,11 +15,11 @@ export const projects: Project[] = [
     stack: [
       "TypeScript",
       "Fastify 5",
-      "Prisma 6",
       "Postgres + pgvector (Supabase)",
-      "Expo / React Native",
       "Raspberry Pi 5",
       "Cloudflare Tunnel",
+      "Prisma 6",
+      "Expo / React Native",
       "GitHub Actions",
     ],
     links: { live: "https://neurship.dev", sourceNote: "Source on request" },

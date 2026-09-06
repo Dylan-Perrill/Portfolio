@@ -28,12 +28,14 @@ export function ProjectHeader({ project }: { project: Project }) {
           <dd className="mt-1 flex flex-wrap gap-x-5 gap-y-1 font-extrabold">
             {links.live && (
               <a href={links.live} target="_blank" rel="noopener noreferrer" className="link-draw">
-                Live ↗
+                Live
+                <span aria-hidden="true"> ↗</span>
               </a>
             )}
             {links.source ? (
               <a href={links.source} target="_blank" rel="noopener noreferrer" className="link-draw">
-                Source ↗
+                Source
+                <span aria-hidden="true"> ↗</span>
               </a>
             ) : (
               <span className="text-ink-3">{links.sourceNote}</span>

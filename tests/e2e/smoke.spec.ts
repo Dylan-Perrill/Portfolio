@@ -98,11 +98,16 @@ test("mountain: quiz is completable by keyboard and photos render", async ({ pag
   expect(errors).toEqual([]);
 });
 
-test("metadata routes: OG image, icon, sitemap, robots", async ({ request }) => {
+test("metadata routes: OG image, icon, sitemap, robots", async ({ page, request }) => {
   const og = await request.get("/opengraph-image");
   expect(og.status()).toBe(200);
   expect(og.headers()["content-type"]).toContain("image/png");
   expect((await og.body()).length).toBeGreaterThan(10_000);
+
+  const projectOg = await request.get("/work/entreprenewer/opengraph-image");
+  expect(projectOg.status()).toBe(200);
+  expect(projectOg.headers()["content-type"]).toContain("image/png");
+  expect((await projectOg.body()).length).toBeGreaterThan(10_000);
 
   const icon = await request.get("/icon.svg");
   expect(icon.status()).toBe(200);
@@ -116,6 +121,14 @@ test("metadata routes: OG image, icon, sitemap, robots", async ({ request }) => 
 
   const robots = await request.get("/robots.txt");
   expect(await robots.text()).toContain("Sitemap: https://www.dylanperrill.com/sitemap.xml");
+
+  // The case study points at its own generated card and still inherits the shared OG fields.
+  await page.goto("/work/entreprenewer");
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+    "content",
+    /\/work\/entreprenewer\/opengraph-image/,
+  );
+  await expect(page.locator('meta[property="og:site_name"]')).toHaveAttribute("content", "Dylan Perrill");
 });
 
 test("404 page is designed and links home", async ({ page }) => {
@@ -132,8 +145,8 @@ test("home page carries OG tags pointing at the generated image", async ({ page 
   await expect(page.locator('meta[property="og:title"]')).toHaveAttribute("content", "Dylan Perrill");
 });
 
-test("reduced motion disables the headline animation", async ({ browser }) => {
-  const ctx = await browser.newContext({ reducedMotion: "reduce", baseURL: "http://localhost:3100" });
+test("reduced motion disables the headline animation", async ({ browser, baseURL }) => {
+  const ctx = await browser.newContext({ reducedMotion: "reduce", baseURL: baseURL ?? undefined });
   const page = await ctx.newPage();
   await page.goto("/");
   const anim = await page.locator(".hero-line").first().evaluate((el) => getComputedStyle(el).animationName);

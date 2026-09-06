@@ -7,6 +7,9 @@ import { Figure } from "@/components/Figure";
 import { Gallery } from "@/components/Gallery";
 import { ProjectHeader } from "@/components/ProjectHeader";
 import { getProject, getProjects, projectSlugs } from "@/content";
+import { site } from "@/content/site";
+
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return projectSlugs.map((slug) => ({ slug }));
@@ -19,7 +22,14 @@ export async function generateMetadata(props: PageProps<"/work/[slug]">): Promis
   return {
     title: project.title,
     description: project.pitch,
-    openGraph: { title: project.title, description: project.pitch, images: [project.images.hero.src] },
+    openGraph: {
+      title: project.title,
+      description: project.pitch,
+      url: `${site.url}/work/${project.slug}`,
+      siteName: site.name,
+      type: "website",
+      locale: "en_US",
+    },
   };
 }
 

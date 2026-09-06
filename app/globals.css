@@ -12,10 +12,11 @@
 
   --font-sans: var(--font-archivo), "Archivo", "Helvetica Neue", Arial, sans-serif;
 
-  /* Meta text: 12px uppercase, tracked. */
+  /* Meta text: 12px uppercase, tracked, weight 500 (spec §4). */
   --text-meta: 0.75rem;
   --text-meta--line-height: 1.4;
   --text-meta--letter-spacing: 0.08em;
+  --text-meta--font-weight: 500;
 
   /* Spec §4: single column below 800px. */
   --breakpoint-md: 50rem;

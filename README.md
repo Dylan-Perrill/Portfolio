@@ -13,6 +13,8 @@ npm test             # Vitest unit tests (also runs before every build)
 npm run build && npm run test:e2e   # Playwright smoke tests against `next start` on :3100
 ```
 
+`prebuild` runs Vitest, so the build needs devDependencies installed — that is Vercel's default; do not set `NPM_CONFIG_PRODUCTION`.
+
 ## How content works
 
 All copy lives in `content/`, not in components:
@@ -26,10 +28,12 @@ All copy lives in `content/`, not in components:
 
 ### Adding a project
 
-1. Capture screens: add targets to `scripts/capture.mjs`, run `npm run capture` (PNGs land in `.capture/`, gitignored).
-2. `npm run optimize` — writes `public/work/<slug>/*.webp` and updates the manifest.
+1. Capture screens: add targets to `scripts/capture.mjs`, run `npm run capture` (PNGs land in `.capture/`, gitignored). Not everything can be crawled — the four Disc Mayhem frames were captured by hand from the running game and have no `capture.mjs` target, so their PNGs only exist on the machine that made them.
+2. `npm run optimize` — converts whatever is in `.capture/` to `public/work/<slug>/*.webp`, then rebuilds the manifest from the committed images (never from `.capture/`). Safe to run at any time, on any clone: with no captures it just re-reads what is already in `public/`, and the output is byte-identical.
 3. Append an object to `content/projects.ts` with the next number. Use `img("work/<slug>/<name>.webp", "what the screen shows")`.
 4. `npm test` — the validator tells you what's missing.
+
+`npm run optimize:gallery` additionally re-encodes `public/gallery/*.jpg` in place, and only when a photo's long edge is still over 1600px. It is opt-in because re-encoding an already-sized JPEG costs generation loss for nothing.
 
 ### Headshot
 

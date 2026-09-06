@@ -7,24 +7,27 @@ export function SiteFooter() {
         <p className="text-meta uppercase text-ink-3">Contact</p>
         <a
           href={`mailto:${site.email}`}
-          className="type-title mt-3 inline-block break-all hover:text-blue"
+          className="type-title mt-3 inline-block break-all normal-case hover:text-blue"
         >
           {site.email}
         </a>
         <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-meta uppercase">
           <li>
             <a href={site.github} target="_blank" rel="noopener noreferrer" className="link-draw">
-              GitHub ↗
+              GitHub
+              <span aria-hidden="true"> ↗</span>
             </a>
           </li>
           <li>
             <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className="link-draw">
-              LinkedIn ↗
+              LinkedIn
+              <span aria-hidden="true"> ↗</span>
             </a>
           </li>
           <li>
             <a href={site.resumePath} target="_blank" rel="noopener noreferrer" className="link-draw">
-              Résumé (PDF) ↗
+              Résumé (PDF)
+              <span aria-hidden="true"> ↗</span>
             </a>
           </li>
         </ul>

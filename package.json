@@ -10,10 +10,11 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "next typegen && tsc --noEmit",
-    "test": "vitest run --passWithNoTests",
+    "test": "vitest run",
     "test:e2e": "playwright test",
     "capture": "node scripts/capture.mjs",
-    "optimize": "node scripts/optimize-images.mjs"
+    "optimize": "node scripts/optimize-images.mjs",
+    "optimize:gallery": "node scripts/optimize-images.mjs --gallery"
   },
   "dependencies": {
     "next": "16.3.4",
